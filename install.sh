@@ -1,5 +1,27 @@
 #!/usr/bin/env sh
 
+flutter_host_mir="https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git"
+flutter_host_main="https://github.com/flutter/flutter.git"
+
+flutter_host_core=$flutter_host_mir
+
+if [ "$1" = "-help" ]; then
+      echo "Parameters: -nomirror"
+      echo "nomirror : use GITHUB.com as the host"
+      echo "otherwise: use TSINGHUA.edu.cn as the host"
+      exit 1;
+elif [ "$1" == "-nomirror" ]; then
+      flutter_host_core=$flutter_host_main
+else
+      flutter_host_core=$flutter_host_mir
+fi
+
+if [[ -z $flutter_host_core ]]
+then
+     usage
+     exit 1
+fi
+
 ###
 # Check preconditions
 ###
@@ -62,7 +84,7 @@ if [ -z "$HAS_SUBMODULE" ]; then
   printf "adding '.flutter' submodule\n"
   UPDATED=false
   # add the flutter submodule
-  git submodule add -b stable https://github.com/flutter/flutter.git $FLUTTER_DIR_NAME
+  git submodule add -b stable $flutter_host_core $FLUTTER_DIR_NAME
 
   # When submodule failed, abort
   if [ ! $? -eq 0 ]; then
@@ -78,7 +100,7 @@ else
   USES_SSH=$(git config --file=.gitmodules submodule.\.flutter.url | cut -c 1-4)
   if [ "$USES_SSH" = "git@" ]; then
     printf "Update .flutter submodule url to https\n"
-    git config --file=.gitmodules submodule.\.flutter.url https://github.com/flutter/flutter.git
+    git config --file=.gitmodules submodule.\.flutter.url $flutter_host_core
     git add .gitmodules
     git submodule sync .flutter
   fi
