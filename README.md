@@ -17,7 +17,7 @@ This is the mirriored version of flutter wrapper, which contains tsinghua mirror
 # Install flutterw
 
 ```bash
-sh -c "$(curl -fsSL https://github.com/carol8421/flutter_wrapper/blob/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/carol8421/flutter_wrapper/master/install.sh)"
 ```
 _Open the Terminal, navigate to your project root and execute the line above._
 
@@ -67,13 +67,13 @@ Don't forget to commit the submodule changes.
 To update the flutter wrapper to the latest version run the install command again:
 
 ```bash
-sh -c "$(curl -fsSL https://github.com/carol8421/flutter_wrapper/blob/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/carol8421/flutter_wrapper/master/install.sh)"
 ```
 
 To update the flutter wrapper to a specific verssion, use the `-t <tag/branch>` (i.e. `v1.0.0`)
 
 ```bash
-sh -c "curl -fsSL https://github.com/carol8421/flutter_wrapper/blob/master/install.sh" | bash /dev/stdin -t v1.0.0
+sh -c "curl -fsSL https://raw.githubusercontent.com/carol8421/flutter_wrapper/master/install.sh" | bash /dev/stdin -t v1.0.0
 ```
 
 
@@ -84,7 +84,7 @@ Removing submodules is hard, that's why I did the hard work for you.
 Simply run this command from the root of your flutter project and the uninstall script will cleanup everything.
 
 ```bash
-sh -c "$(curl -fsSL https://github.com/carol8421/flutter_wrapper/blob/master/uninstall.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/carol8421/flutter_wrapper/master/uninstall.sh)"
 ```
 
 Bye :wave:
@@ -99,7 +99,7 @@ mkdir flutter_wrapper_project && cd "$_"
 git init
 
 # 2. Install flutterw
-sh -c "$(curl -fsSL https://github.com/carol8421/flutter_wrapper/blob/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/carol8421/flutter_wrapper/master/install.sh)"
 
 # 3. Create Flutter project
 ./flutterw create .
